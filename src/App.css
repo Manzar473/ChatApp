@@ -1,38 +1,312 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* body{
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  margin-top: 70px;
+  background-color: rgb(32, 31, 31);
+  font-family: sans-serif;
+}
+.chat-container{
+  background-color: white;
+  display: flex;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-direction: column;
+  width: 500px;
+  border-radius: 12px;
+}
+.chat-container h1{
+  width: 100%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.messages-container{
+  border-top: 2px solid gray;
+  min-height: 600px;
+  background-color: rgb(204, 200, 200);
+  width: 97%;
+  padding: 20px 8px;
+  max-height: 300px;
+  overflow-y: scroll;
+}
+.message-sent{
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: right;
+  
+}
+.message-receieve{
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  
+}
+.message-sent span{
+  background-color: black;
   color: white;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 21px;
+  
+}
+.message-receieve span{
+  background-color: white;
+  color: black;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 21px;
+  
+}
+.send-container{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 10px 10px 10px 10px;
+}
+.send-container input {
+  width: 360px;
+  padding: 15px 24px;
+  outline: none;
+  border: none;
+  font-size: 18px;
+}
+.send{   
+   width: 80px;
+  height: 49px;
+  text-transform: uppercase;
+  outline: none;
+  border: none;
+  background-color: black;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.signin-container input{
+  width: 100%;
+}
+.signin-container  {
+  background-color: white;
+  padding: 20px 0px;
+  width: 400px;
+  height: 400px;
+display: flex;
+align-items: center;
+flex-direction: column;
+}
+.loggedOut{
+  width: 119px;
+    height: 33px;
+    margin-top: 19px;
+    background-color: black;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 6px;
+    font-weight: 700;}
+.NoChat{
+
+    text-align: center;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: #8080806e;
+    padding: 20px;
+    color: #484242
+  } */
+
+
+  *{
+    margin: 0px;
+    padding: 0px;
 }
 
-.App-link {
-  color: #61dafb;
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(8, 126, 180);
+    font-family: sans-serif;
+    padding-top:10px ;
+}
+.signIn-container{
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px 20px;
+    border-radius: 12px;
+    min-height: 350px;
+    box-shadow: 2px 2px 10px;
+}
+.signIn-container h2{
+    padding: 10px 0px;
+}
+.labels{
+    font-weight: bold;
+    font-size: 14px;
+    margin: 10px 0px 6px 0px;
+}
+.signIn-container input {
+    padding: 8px;
+    outline: none;
+    min-width: 270px;
+    border: 1px solid rgb(173, 173, 173);
+    border-radius: 5px;
+    margin: 5px 0px;
+}
+.signIn{
+    margin-top: 20px;
+    background-color:rgb(8, 126, 180) ;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 8px;
+    width: 70px;
+    height: 32px;
+    font-weight: 500;
+    width: 100%;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.signIn:hover{
+    background-color: white;
+    color:rgb(8, 126, 180);
+    border:1px solid  rgb(8, 126, 180);
+
+}
+.signInText{
+    color: rgb(8, 126, 180);
+}
+.logo-container{
+    width: 100%;
+    padding: 20px 0px;
+}
+.logo{
+text-align: center;
+background-color:rgb(8, 126, 180) ;
+color: white;
+border-radius: 12px;
+padding: 7px 0px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* CSS for Chat BOx */
+.chat-container{
+    box-shadow: 2px 2px 10px;
+}
+
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(8, 126, 180);
+    padding: 5px;
+}
+.header img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+.header h2{
+    color: white;
+    font-weight: 600;
+    font-size: 18px;
+    margin-left: 12px;
+
+}
+.chat-content{
+    min-height: 450px;
+    max-height: 450px;
+    background-color: rgb(10, 73, 88);
+    padding: 8px;
+    max-width: 295px;
+    overflow-y: scroll;
+}
+.chat-content::-webkit-scrollbar {
+    display: none;
   }
-  to {
-    transform: rotate(360deg);
-  }
+.send-container{
+    display: flex;
+}
+.send-container input{
+  padding: 13px 10px;
+    outline: none;
+    min-width: 240px;
+}
+.send-container button{
+width: 47px;
+    background-color: rgb(8, 126, 180);
+    outline: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+}
+.message-sent{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 29px 0px;
+    position: relative;
+}
+.message-sent p {
+    background-color: rgb(8, 126, 180);
+    color: white;
+    padding: 7px 7px;
+    border-radius: 10px 10px 0px 10px;
+    font-size: 13px;
+   
+}
+.message-sent span {
+  position: absolute;
+    font-size: 13px;
+    bottom: -18px;
+    right: 2px;
+    color: #f9f9f9e6;
+}
+
+.message-receieve{
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 29px 0px;
+    position: relative;
+}
+.message-receieve p {
+    background-color: white;
+    color: black;
+    padding: 7px 7px;
+    border-radius: 10px 10px 10px 0px;
+    font-size: 13px;
+   
+}
+.message-receieve span {
+  position: absolute;
+    font-size: 13px;
+   bottom: -18px;
+    left: 2px;
+    color: #f9f9f9e6;
+}
+.loggedOut{
+    width: 67px;
+    height: 28px;
+    outline: none;
+    border: none;
+    border-radius: 12px;
+    font-weight: 700;
+    background-color: white;
+    color: black;
+    cursor: pointer;
+}
+.NoChat{
+  text-align: center;
+  background-color: #ffffff5e;
+  padding: 11px;
+  font-family: sans-serif;
+  color: black;
+  font-weight: 500;
+}
+.userInfo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
