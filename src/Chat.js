@@ -1,15 +1,15 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import nobitaprofile from './nobita.jpg'
 import doraemon from './doraemon.png'
-
+import Message from './message'
 function Chat(props) {
-  const dummy=useRef()
-  useEffect(()=>{
-  dummy.current.scrollIntoView({behavior:'smooth'})
-  },[props.messages])
-
-  const handleLogout=()=>{
-    localStorage.setItem('userloggedin','')
+  const dummy = useRef()
+  const [id, setid] = useState(null)
+  useEffect(() => {
+    dummy.current.scrollIntoView({ behavior: 'smooth' })
+  }, [props.messages])
+  const handleLogout = () => {
+    localStorage.setItem('userloggedin', '')
     props.setuserLogged('')
   }
   return (
@@ -26,14 +26,10 @@ function Chat(props) {
     //    <span>{el.message}</span>
     //   </div>
     //   )
-    //  }) 
+    //  })
     //   }
-      // <div ref={dummy}></div>
-
-
-
-      // {!props.messages.length&&<div className='NoChat'>Start a Chat!</div>}
-      
+    // <div ref={dummy}></div>
+    // {!props.messages.length&&<div className='NoChat'>Start a Chat!</div>}
     //  </div>
     //  <div className='send-container'>
     //  <input value={props.name} onChange={e=>props.setname(e.target.value)} type='text' placeholder='Type your message...'/>
@@ -41,37 +37,31 @@ function Chat(props) {
     //  </div>
     // </div>
     <div className="chat-container">
-    <div className="header">
-      <div className='userInfo'>
-      <img src={props.userLogged==='admin'? doraemon:nobitaprofile} />
-      <h2>{props.userLogged==='admin'?'Doraemon':'Nobita'}</h2>
+      <div className="header">
+        <div className='userInfo'>
+          <img src={props.userLogged === 'admin' ? doraemon : nobitaprofile} />
+          <h2>{props.userLogged === 'admin' ? 'Doraemon' : 'Nobita'}</h2>
+        </div>
+        <button onClick={handleLogout} className='loggedOut'>Log Out</button>
       </div>
-      <button onClick={handleLogout} className='loggedOut'>Log Out</button>
-    </div>
-    <div className="chat-content">
-    { props.messages?.map((el,index)=>{
-      return (
-      el.sendBy===props.userLogged?
-      <div className="message-sent">
-        <p>{el.message}</p>
-        <span className='time'>{el.time}</span>
-      </div> :
-      <div className="message-receieve">
-        <p>{el.message}</p>
-        <span className='time'>{el.time}</span>
+      <div className="chat-content">
+        {props.messages?.map((el, index) => {
+          return (
+            el.sendBy === props.userLogged ?
+              <Message handleReact={props.handleReact} index={index} id={id} setid={setid} type='sent' data={el} /> :
+              <Message handleReact={props.handleReact} index={index} id={id} setid={setid} type='receieve' data={el} />
+          )
+        })
+        }
+        <div ref={dummy}></div>
+        {(!props.messages.length && props.error) && <div className='NoChat'>Connecting....</div>}
+        {(!props.messages.length && !props.error) && <div className='NoChat'>Start a Chat!</div>}
       </div>
-       )
-      }) 
-       }
-      <div ref={dummy}></div>
-     {!props.messages.length&&<div className='NoChat'>Start a Chat!</div>}
+      <div className="send-container">
+        <input value={props.name} onChange={e => props.setname(e.target.value)} type="text" placeholder="type a message.." />
+        <button onClick={props.addData}>Send</button>
+      </div>
     </div>
-    <div className="send-container">
-      <input value={props.name} onChange={e=>props.setname(e.target.value)} type="text" placeholder="type a message.." />
-      <button onClick={props.addData}>Send</button>
-    </div>
-  </div>
   )
 }
-
 export default Chat
