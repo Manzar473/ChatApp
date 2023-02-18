@@ -7,7 +7,7 @@ function Chat(props) {
   const [id, setid] = useState(null)
   useEffect(() => {
     dummy.current.scrollIntoView({ behavior: 'smooth' })
-  }, [props.messages])
+  }, [props.messages.length])
   const handleLogout = () => {
     localStorage.setItem('userloggedin', '')
     props.setuserLogged('')
@@ -45,11 +45,15 @@ function Chat(props) {
         <button onClick={handleLogout} className='loggedOut'>Log Out</button>
       </div>
       <div className="chat-content">
+
         {props.messages?.map((el, index) => {
           return (
-            el.sendBy === props.userLogged ?
-              <Message handleReact={props.handleReact} index={index} id={id} setid={setid} type='sent' data={el} /> :
-              <Message handleReact={props.handleReact} index={index} id={id} setid={setid} type='receieve' data={el} />
+            <>
+              <Message handleReact={props.handleReact} index={index} id={id} setid={setid} type={el.sendBy === props.userLogged ? 'sent' : 'receieve'} data={el}
+                showDateBubble={props.messages[index]?.time?.split('  ')[1] === props.messages[index - 1]?.time?.split('  ')[1] ? false : true}
+
+              />
+            </>
           )
         })
         }

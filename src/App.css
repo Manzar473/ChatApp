@@ -239,6 +239,22 @@ width: 47px;
 .message-container{
  position: relative;
 }
+.Date-Bubble{
+   text-align: center;
+   padding: 6px 15px;
+   border-radius: 22px;
+   font-weight: 600;
+   font-size: 13px;
+   font-family: unset;
+   width: -moz-fit-content;
+   width: fit-content;
+   margin: auto;
+   background-color: rgb(3 37 52);
+   color: white;
+   border: 2px solid;
+}
+
+
 /* media query */
 @media (max-width:768px) {
  body{

@@ -15,14 +15,24 @@ function App() {
   useEffect(() => {
     userlogg ? setuserLogged(userlogg) : setuserLogged('')
   }, [userlogg])
+
+
+  const getMon = (nmbr) => {
+    const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+    return months[nmbr]
+  }
+
+
   function formatAMPM(date) {
     var hours = date.getHours();
     var minutes = date.getMinutes();
+    var day = date.getDate();
+    var month = date.getMonth();
     var ampm = hours >= 12 ? 'pm' : 'am';
     hours = hours % 12;
     hours = hours ? hours : 12; // the hour '0' should be '12'
     minutes = minutes < 10 ? '0' + minutes : minutes;
-    var strTime = hours + ':' + minutes + ' ' + ampm;
+    var strTime = hours + ':' + minutes + ' ' + ampm + '   ' + day + ' - ' + getMon(month);
     return strTime;
   }
   const getUsers = async () => {

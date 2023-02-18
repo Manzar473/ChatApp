@@ -26,7 +26,8 @@ function Message(props) {
         setshowEmojiBar(false)
     }
     const emojis = ['😂', '😥', '❤️', '🌸', '👀', '🥰', '💔']
-    return (
+    return (<>
+        {props.showDateBubble && props.data.time.split('  ')[1] && <div className='Date-Bubble'>{props.data.time.split('  ')[1]}</div>}
         <div className='message-container'>
             {(showEmojiBar && selectone) && <ul className={`reactions-${props.type}`}>
                 {emojis.map(emj => <li className={props.data.reaction === emj ? 'activatedEnoji' : ''} onClick={e => handleReactedEmoji(e)}>{emj}</li>)}
@@ -35,9 +36,10 @@ function Message(props) {
                 <p>{props.data.message}
                     {props.data.reaction && <div className='reacted-emoji'>{props.data.reaction}</div>}
                 </p>
-                <span className='time'>{props.data.time}</span>
+                <span className='time'>{props.data.time.split('  ')[0]}</span>
             </div>
         </div>
+    </>
     )
 }
 export default Message
